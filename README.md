@@ -223,6 +223,7 @@ Contribuições são muito bem-vindas! Se você deseja adicionar novas ferrament
 ## Roadmap
 
 - Adicionar suporte a outros formatos de log
+- Adicionar parse de logs por meio de um dicionario
 - Melhorar a compatibilidade com sistemas Unix-like e MacOS
 - Adicionar mais ferramentas para automação de tarefas DevOps
 
