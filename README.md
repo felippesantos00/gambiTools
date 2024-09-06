@@ -228,4 +228,10 @@ Contribuições são muito bem-vindas! Se você deseja adicionar novas ferrament
 
 ## Agradecimentos
 
-Agradecemos a todos os desenvolvedores que contribuem para soluções práticas, e à comunidade brasileira de TI por sempre encontrar uma saída criativa para resolver problemas. "Se não tem solução, a gente inventa!"
+Gostaria de expressar minha profunda gratidão aos seguintes recursos que foram essenciais para o desenvolvimento do GambiTools:
+
+- **[Aurelio.net - Canivete Suíço de Shell](https://aurelio.net/shell/canivete/)**: Este site inspirou a criação de uma coleção de utilitários versáteis e práticos para automação e administração de sistemas.
+- **[GNU AWK Manual](https://www.gnu.org/software/gawk/manual/gawk.html)**: O manual do AWK foi fundamental para compreender e implementar funcionalidades de manipulação de dados e logs.
+- **[Stack Overflow](https://stackoverflow.com)**: A comunidade do Stack Overflow forneceu soluções valiosas e insights que foram cruciais para resolver desafios técnicos durante o desenvolvimento.
+
+Agradeço a todos os autores e contribuintes que compartilham seu conhecimento e experiências, tornando o desenvolvimento mais acessível e enriquecedor. Um agradecimento especial à comunidade brasileira de TI por sempre encontrar soluções criativas e práticas para resolver problemas. "Se não tem solução, a gente inventa!"
