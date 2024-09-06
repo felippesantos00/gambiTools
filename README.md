@@ -1,9 +1,6 @@
-Aqui está o `README.md` atualizado com as novas funções e suas descrições, além de um índice incluído para facilitar a navegação:
-
-```markdown
 # GambiTools
 
-**GambiTools** é uma poderosa coleção de utilitários em shell script e AWK, projetada para resolver problemas comuns de forma rápida e eficiente. Inspirado na versatilidade do "canivete suíço", o GambiTools oferece uma série de funções que automatizam e facilitam operações cotidianas no desenvolvimento e administração de sistemas, com um toque de criatividade e a famosa "gambiarra" brasileira.
+**GambiTools** é uma coleção de utilitários em shell script e AWK, projetada para resolver problemas comuns de forma rápida e eficiente. Inspirado na versatilidade do "canivete suíço", o GambiTools oferece uma série de funções que automatizam e facilitam operações cotidianas no desenvolvimento e administração de sistemas.
 
 ## Índice
 
@@ -11,10 +8,15 @@ Aqui está o `README.md` atualizado com as novas funções e suas descrições, 
 - [Requisitos](#requisitos)
 - [Instalação](#instalação)
 - [Uso](#uso)
-  - [Exemplo: Gerar Linha do Tempo](#exemplo-gerar-linha-do-tempo)
-  - [Exemplo: Manipulação de Logs](#exemplo-manipulação-de-logs)
-  - [Exemplo: Formatar Datas para ISO 8601](#exemplo-formatar-datas-para-iso-8601)
-- [Scripts Disponíveis](#scripts-disponíveis)
+  - [1. Verificar se um arquivo existe](#1-verificar-se-um-arquivo-existe)
+  - [2. Verificar se um diretório existe](#2-verificar-se-um-diretório-existe)
+  - [3. Registrar uma mensagem de log](#3-registrar-uma-mensagem-de-log)
+  - [4. Rotacionar arquivos de log](#4-rotacionar-arquivos-de-log)
+  - [5. Buscar uma palavra em arquivos de log](#5-buscar-uma-palavra-em-arquivos-de-log)
+  - [6. Criar backup de arquivo](#6-criar-backup-de-arquivo)
+  - [7. Identificar sistema operacional](#7-identificar-sistema-operacional)
+  - [8. Formatar datas para ISO 8601](#8-formatar-datas-para-iso-8601)
+  - [9. Gerar Linha do Tempo](#9-gerar-linha-do-tempo)
 - [Contribuições](#contribuições)
 - [Roadmap](#roadmap)
 - [Licença](#licença)
@@ -53,34 +55,166 @@ export PATH=$PATH:/caminho/para/gambiTools
 
 ## Uso
 
-### Exemplo: Gerar Linha do Tempo
+### 1. Verificar se um arquivo existe
 
+**Função:** `verificar_arquivo_existe`
+
+Verifica se um arquivo existe e registra o resultado no log.
+
+**Exemplo:**
 ```bash
-./gambiTools generate_timeline "2024-09-01 10:00:00" 60 10
+verificar_arquivo_existe "/caminho/para/arquivo.txt"
 ```
-Este comando irá gerar uma linha do tempo a partir da data especificada, adicionando 60 segundos por linha, até atingir 10 linhas.
+**Saída esperada:**
+```
+Arquivo existe: /caminho/para/arquivo.txt
+```
 
-### Exemplo: Formatar Datas para ISO 8601
+### 2. Verificar se um diretório existe
 
+**Função:** `verificar_diretorio_existe`
+
+Verifica se um diretório existe e registra o resultado no log.
+
+**Exemplo:**
 ```bash
-./gambiTools formatar_datas_para_iso_8601 /caminho/para/arquivo.csv
+verificar_diretorio_existe "/caminho/para/diretorio"
 ```
-Este comando formata datas em um arquivo CSV para o padrão ISO 8601.
+**Saída esperada:**
+```
+Diretório existe: /caminho/para/diretorio
+```
 
-### Exemplo: Manipulação de Logs
+### 3. Registrar uma mensagem de log
 
+**Função:** `registrar_log`
+
+Registra uma mensagem com data e hora em um arquivo de log e realiza a rotação dos logs se necessário.
+
+**Exemplo:**
 ```bash
-./gambiTools logParser /caminho/para/log.txt --format="custom"
+registrar_log "Iniciando processo de backup"
 ```
-Este comando parseia um arquivo de log, convertendo timestamps para um formato padrão.
+**Saída esperada:**
+```
+2024-09-01 10:00:00.000 - Iniciando processo de backup
+```
 
-## Scripts Disponíveis
+### 4. Rotacionar arquivos de log
 
-- **generate_timeline**: Gera uma sequência de timestamps incrementais.
-- **formatar_datas_para_iso_8601**: Converte datas de um arquivo para o padrão ISO 8601.
-- **logParser**: Analisa e converte timestamps em arquivos de log.
-- **fileCleaner**: Remove ou substitui padrões em arquivos.
-- **sysMonitor**: Exibe informações em tempo real sobre o uso de CPU, memória e disco.
+**Função:** `rotacionar_logs`
+
+Rotaciona arquivos de log que excedem um tamanho específico. Cria o diretório de logs se ele não existir.
+
+**Exemplo:**
+```bash
+rotacionar_logs "/caminho/para/diretorio/logs" "10k"
+```
+**Saída esperada:**
+```
+Diretório de logs existe: /caminho/para/diretorio/logs
+```
+Ou, se o diretório precisar ser criado:
+```
+Criando diretório de logs: /caminho/para/diretorio/logs
+```
+
+### 5. Buscar uma palavra em arquivos de log
+
+**Função:** `buscar_palavra_em_log`
+
+Busca uma palavra em arquivos de log e registra o resultado.
+
+**Exemplo:**
+```bash
+buscar_palavra_em_log "/caminho/para/arquivo.log" "erro"
+```
+**Saída esperada:**
+```
+Buscando palavra: erro no arquivo: /caminho/para/arquivo.log
+Palavra encontrada: erro
+```
+
+### 6. Criar backup de arquivo
+
+**Função:** `criar_backup_arquivo`
+
+Cria um backup de um arquivo e o compacta com base no sistema operacional detectado.
+
+**Exemplo:**
+```bash
+criar_backup_arquivo "meuarquivo.txt"
+```
+**Saída esperada:**
+```
+Sistema operacional detectado: Linux
+Compactando arquivo: meuarquivo.txt
+```
+Ou, para Windows:
+```
+Sistema operacional detectado: MINGW64_NT-10.0-19045
+Compactando arquivo: meuarquivo.txt
+```
+
+### 7. Identificar sistema operacional
+
+**Função:** `identificar_sistema_operacional`
+
+Identifica o sistema operacional e registra o resultado.
+
+**Exemplo:**
+```bash
+identificar_sistema_operacional
+```
+**Saída esperada:**
+```
+Identificando sistema operacional: Linux
+```
+
+### 8. Formatar datas para ISO 8601
+
+**Função:** `formatar_datas_para_iso_8601`
+
+Formata datas em um arquivo para o padrão ISO 8601.
+
+**Exemplo:**
+```bash
+formatar_datas_para_iso_8601 "/caminho/para/arquivo.csv"
+```
+**Saída esperada:**
+```
+2024-09-01T10:00:00
+2024-09-01T10:01:00
+```
+**Observação:** Certifique-se de que o arquivo contém datas no formato suportado.
+
+### 9. Gerar Linha do Tempo
+
+**Função:** `generate_timeline`
+
+Gera uma sequência de timestamps a partir de uma data inicial e intervalos específicos.
+
+**Exemplo:**
+```bash
+generate_timeline "2024-09-01 10:00:00" 60 10
+```
+**Saída esperada:**
+```
+2024-09-01 10:00:00
+2024-09-01 10:01:00
+2024-09-01 10:02:00
+2024-09-01 10:03:00
+2024-09-01 10:04:00
+2024-09-01 10:05:00
+2024-09-01 10:06:00
+2024-09-01 10:07:00
+2024-09-01 10:08:00
+2024-09-01 10:09:00
+```
+**Parâmetros:**
+- `start_date`: Data inicial no formato `YYYY-MM-DD HH:MM:SS`
+- `interval`: Intervalo em segundos entre os timestamps (ex.: 1 para segundos, 60 para minutos, 86400 para dias)
+- `qtd_lines`: Quantidade de timestamps a serem gerados
 
 ## Contribuições
 
@@ -91,10 +225,6 @@ Contribuições são muito bem-vindas! Se você deseja adicionar novas ferrament
 - Adicionar suporte a outros formatos de log
 - Melhorar a compatibilidade com sistemas Unix-like e MacOS
 - Adicionar mais ferramentas para automação de tarefas DevOps
-
-## Licença
-
-Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Agradecimentos
 
